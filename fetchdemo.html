@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>FetchDemo</title>
+    </head>
+    <body>
+        <h2>Kushal Katari computes</h2>
+        <form>
+            <input type="number" name="k1" id="k1">
+            <input type="number" name="k2" id="k2">
+            <input type="button" name="Remote compute" onclick="compute()" value="send">
+        </form>
+        <div id="result"></div>
+        <script>
+            
+            function compute(){
+                 var x=document.getElementById("k1").value;
+             var y=document.getElementById("k2").value;
+                fetch(`http://127.0.0.1:3001/?x=${x}&y=${y}`).then( (resp) => { return resp.text()}) .then (text =>{
+                    console.log(text);
+
+         document.getElementById("result").innerHTML = text;
+                }).catch(error =>{
+                    document.getElementById("result").innerHTML=error;
+                })
+            }
+
+            </script>
+
+    </body>
+</html>
