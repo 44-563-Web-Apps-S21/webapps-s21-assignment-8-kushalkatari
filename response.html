@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><title>Response page</title>
+</head>
+<body>
+    <div class="Introduction">
+        <h1>IPhones</h1>
+        <h4>Iphones Models  </h4>
+        <div><button onclick="getIphones()">Get Iphones Models</button>
+        </div>
+    </div>
+    <div id="IPhones"></div>
+    <script>
+        const getWebseries = () => {
+            fetch('http://127.0.0.1:3001').then(
+                (res) => {
+                    console.log(res)
+                    return res.text()
+                }
+            ).then(data => {
+            
+                console.log(data)
+                document.getElementById("IPhones").innerHTML = data
+            }).catch(err => {
+                document.getElementById("Iphones").innerHTML = err
+            })
+        }
+    </script>
+</body>
+</html>
